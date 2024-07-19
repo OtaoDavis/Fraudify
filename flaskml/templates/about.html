@@ -1,0 +1,132 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section class="about-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h2 class="section-title">About Us</h2>
+        <p class="section-description">We are a dedicated team of experts in fraud detection for mobile money transactions. Our mission is to help businesses protect their mobile money platforms from fraudulent activities.</p>
+        <p class="section-description">With our advanced machine learning algorithms and intelligent analytics, we provide real-time monitoring and analysis of transaction patterns to identify and prevent fraudulent transactions.</p>
+      </div>
+      <div class="col-md-6">
+        <img src="/static/hero_image.jpg" alt="About Us" class="img-fluid">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="team-section">
+  <div class="container">
+    <h2 class="section-title">Our Team</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card team-member-card">
+          <img src="/static/user.jpg" alt="Team Member 1" class="card-img-top">
+          <div class="card-body">
+            <h3 class="card-title">Davis Otao</h3>
+            <p class="card-text">Developer</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card team-member-card">
+          <img src="/static/user.jpg" alt="Team Member 2" class="card-img-top">
+          <div class="card-body">
+            <h3 class="card-title">Keith Matwere</h3>
+            <p class="card-text">Machine Learning Engineer</p>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="col-md-4">
+        <div class="card team-member-card">
+          <img src="/static/user.jpg" alt="Team Member 3" class="card-img-top">
+          <div class="card-body">
+            <h3 class="card-title">Bramwel Tum</h3>
+            <p class="card-text">Data Analyst</p>
+          </div>
+        </div>
+      </div> -->
+      <!-- <div class="col-md-4">
+        <div class="card team-member-card">
+          <img src="/static/user.jpg" alt="Team Member 4" class="card-img-top">
+          <div class="card-body">
+            <h3 class="card-title">Miriam Mildred</h3>
+            <p class="card-text">Front-End developer</p>
+          </div>
+        </div> -->
+        <style>
+          .team-member-card {
+              border: 1px solid #f2f2f2;
+              border-radius: 10px;
+              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+              transition: transform 0.3s ease-in-out;
+          }
+          
+          .team-member-card:hover {
+              transform: scale(1.05);
+          }
+          
+          .team-member-card .card-img-top {
+              border-top-left-radius: 10px;
+              border-top-right-radius: 10px;
+              height: 300px;
+              object-fit: cover;
+          }
+          
+          .team-member-card .card-body {
+              background-color: #ffe6f2;
+              text-align: center;
+          }
+          
+          .team-member-card .card-title {
+              font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+              font-weight: 700;
+              color: #0b77f3;
+          }
+          
+          .team-member-card .card-text {
+              font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+              color: #333;
+          }
+          </style>
+          
+      </div>
+      <!-- <div class="col-md-4">
+        <div class="card team-member-card">
+          <img src="/static/user.jpg" alt="Team Member 5" class="card-img-top">
+          <div class="card-body">
+            <h3 class="card-title">Teddy Okatch</h3>
+            <p class="card-text">Machine Learning Engineer</p>
+          </div>
+        </div>
+      </div> -->
+      <!-- <div class="col-md-4">
+        <div class="card team-member-card">
+          <img src="/static/user.jpg" alt="Team Member 6" class="card-img-top">
+          <div class="card-body">
+            <h3 class="card-title">John </h3>
+            <p class="card-text">Machine Learning Engineer</p>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+      <p>&copy; 2024 Fraud Detection System. All rights reserved.</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+      background-color: #f8f9fa;
+      padding: 20px 0;
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+  }
+</style>
+{% endblock %}

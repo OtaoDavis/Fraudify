@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section class="faq-section">
+  <div class="container">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="accordion" id="accordionFAQ">
+      <div class="card">
+        <div class="card-header" id="faqHeading1">
+          <h5 class="mb-0">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#faqCollapse1" aria-expanded="true" aria-controls="faqCollapse1">
+              Question 1: What is mobile money?
+            </button>
+          </h5>
+        </div>
+        <div id="faqCollapse1" class="collapse show" aria-labelledby="faqHeading1" data-parent="#accordionFAQ">
+          <div class="card-body">
+            Mobile money refers to a digital payment system that allows users to perform financial transactions using their mobile devices. It enables users to send and receive money, pay bills, and make purchases conveniently through their mobile phones.
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="faqHeading2">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+              Question 2: How does your fraud detection system work?
+            </button>
+          </h5>
+        </div>
+        <div id="faqCollapse2" class="collapse" aria-labelledby="faqHeading2" data-parent="#accordionFAQ">
+          <div class="card-body">
+            Our fraud detection system utilizes advanced machine learning algorithms to analyze transaction patterns and identify suspicious activities. It continuously monitors and analyzes incoming transactions, looking for anomalies and patterns associated with fraudulent behavior. When potential fraud is detected, the system raises alerts for further investigation and preventive actions.
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="faqHeading3">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#faqCollapse3" aria-expanded="false" aria-controls="faqCollapse3">
+              Question 3: How accurate is your fraud detection system?
+            </button>
+          </h5>
+        </div>
+        <div id="faqCollapse3" class="collapse" aria-labelledby="faqHeading3" data-parent="#accordionFAQ">
+          <div class="card-body">
+            Our fraud detection system achieves high accuracy through continuous learning and refinement. It learns from historical data and adapts to new fraud patterns, enabling it to detect and prevent fraudulent transactions with a high degree of accuracy. However, it's important to note that no system is perfect, and occasional false positives or false negatives may occur.
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="faqHeading4">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#faqCollapse4" aria-expanded="false" aria-controls="faqCollapse4">
+              Question 4: How can I use the fraud detection model in my mobile money platform?
+            </button>
+          </h5>
+        </div>
+        <div id="faqCollapse4" class="collapse" aria-labelledby="faqHeading4" data-parent="#accordionFAQ">
+          <div class="card-body">
+            Integrating our fraud detection model into your mobile money platform involves the following steps:
+            <ol>
+              <li>Obtain the necessary API keys or access credentials from our system.</li>
+              <li>Implement the required API calls to send transaction data to our system for analysis.</li>
+              <li>Receive the response from our system, which will indicate the likelihood of fraud for the provided transaction.</li>
+              <li>Take appropriate actions based on the fraud likelihood, such as flagging suspicious transactions for manual review or blocking them outright.</li>
+            </ol>
+            Please refer to our documentation and developer guides for detailed instructions on integrating our fraud detection system with your mobile money platform.
+          </div>
+        </div>
+      </div>
+      <!-- Add more FAQ items as needed -->
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+      <p>&copy; 2024 Fraud Detection System. All rights reserved.</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+      background-color: #f8f9fa;
+      padding: 20px 0;
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+  }
+</style>
+{% endblock %}

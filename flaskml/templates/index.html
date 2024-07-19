@@ -1,0 +1,108 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mt-4 mb-4 text-center">Fraud Detection</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            {% if prediction %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Prediction:</strong> {{ prediction }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% endif %}
+            {% if error_message %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Error:</strong> {{ error_message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% endif %}
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <form method="POST" action="/index">
+                        <div class="form-group">
+                            <label for="type">Transaction Type:</label>
+                            <select class="form-control" id="type" name="type" required>
+                                <option value="tp_CASH_OUT">CASH_OUT</option>
+                                <option value="tp_TRANSFER">TRANSFER</option>
+                                <option value="tp_PAYMENT">PAYMENT</option>
+                                <option value="tp_DEBIT">DEBIT</option>
+                                <option value="tp_CASH_IN">CASH_IN</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="nameDest">Customer Name:</label>
+                            <input type="text" class="form-control" id="nameDest" name="nameDest" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="amount">Amount:</label>
+                            <input type="number" class="form-control" id="amount" name="amount" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="oldbalanceOrg">Old Balance Origin:</label>
+                            <input type="number" class="form-control" id="oldbalanceOrg" name="oldbalanceOrg" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newbalanceOrig">New Balance Origin:</label>
+                            <input type="number" class="form-control" id="newbalanceOrig" name="newbalanceOrig" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nameDest">Receiver Name:</label>
+                            <input type="text" class="form-control" id="nameDest" name="nameDest" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="oldbalanceDest">Old Balance Destination:</label>
+                            <input type="number" class="form-control" id="oldbalanceDest" name="oldbalanceDest" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newbalanceDest">New Balance Destination:</label>
+                            <input type="number" class="form-control" id="newbalanceDest" name="newbalanceDest" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Predict</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="site-footer mt-5">
+    <div class="container">
+        <p>&copy; 2024 Fraud Detection System. All rights reserved.</p>
+    </div>
+</footer>
+
+<style>
+    .site-footer {
+        background-color: #f8f9fa;
+        padding: 20px 0;
+        text-align: center;
+        font-size: 14px;
+        color: #666;
+    }
+    .card {
+        border: none;
+        border-radius: 10px;
+    }
+    .card-body {
+        padding: 30px;
+    }
+    .form-control {
+        border-radius: 5px;
+    }
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        border-radius: 5px;
+        font-size: 18px;
+    }
+</style>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+{% endblock %}

@@ -1,0 +1,162 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section">
+    <form method="POST" action="" id="registerForm">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Join Today</legend>
+            <div class="form-group">
+                {{ form.username.label(class="form-control-label") }}
+                {% if form.username.errors %}
+                    {{ form.username(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.username.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.username(class="form-control form-control-lg") }}
+                {% endif %}
+                <div class="invalid-feedback" id="usernameFeedback"></div>
+            </div>
+            <div class="form-group">
+                {{ form.email.label(class="form-control-label") }}
+                {% if form.email.errors %}
+                    {{ form.email(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.email.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.email(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.password.label(class="form-control-label") }}
+                <div class="input-group">
+                    {% if form.password.errors %}
+                        {{ form.password(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.password(class="form-control form-control-lg") }}
+                    {% endif %}
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="passwordHelp" data-toggle="tooltip" data-placement="top" title="Use at least 8 characters, including letters, numbers, and special characters.">
+                            <i class="fas fa-info-circle"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="invalid-feedback" id="passwordFeedback"></div>
+            </div>
+            <div class="form-group">
+                {{ form.confirm_password.label(class="form-control-label") }}
+                {% if form.confirm_password.errors %}
+                    {{ form.confirm_password(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.confirm_password.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.confirm_password(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info btn-block", id="submitButton") }}
+        </div>
+    </form>
+</div>
+<div class="border-top pt-3">
+    <small class="text-muted">
+        Already Have An Account? <a class="ml-2" href="{{ url_for('login') }}">Sign In</a>
+    </small>
+</div>
+
+<!-- Custom CSS -->
+<style>
+    .content-section {
+        max-width: 600px;
+        margin: auto;
+    }
+</style>
+
+<!-- JavaScript for input sanitization and interactivity -->
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        // Tooltip initialization
+        $('[data-toggle="tooltip"]').tooltip();
+
+        // Real-time validation
+        const registerForm = document.getElementById('registerForm');
+        const usernameInput = registerForm.elements['username'];
+        const passwordInput = registerForm.elements['password'];
+        const passwordFeedback = document.getElementById('passwordFeedback');
+        const usernameFeedback = document.getElementById('usernameFeedback');
+        const submitButton = document.getElementById('submitButton');
+
+        usernameInput.addEventListener('input', (e) => {
+            const usernameValue = e.target.value;
+            const usernameRegex = /^[a-zA-Z0-9_-]+$/;
+            if (!usernameRegex.test(usernameValue)) {
+                usernameInput.classList.add('is-invalid');
+                usernameFeedback.textContent = 'Username must contain only letters, numbers, underscores, or hyphens.';
+            } else {
+                usernameInput.classList.remove('is-invalid');
+                usernameFeedback.textContent = '';
+            }
+        });
+
+        passwordInput.addEventListener('input', (e) => {
+            const passwordValue = e.target.value;
+            const passwordCriteria = [
+                { regex: /.{8,}/, message: 'at least 8 characters' },
+                { regex: /[A-Z]/, message: 'one uppercase letter' },
+                { regex: /[a-z]/, message: 'one lowercase letter' },
+                { regex: /[0-9]/, message: 'one digit' },
+                { regex: /[!@#$%^&*(),.?":{}|<>]/, message: 'one special character' }
+            ];
+
+            const unmetCriteria = passwordCriteria.filter(criteria => !criteria.regex.test(passwordValue)).map(criteria => criteria.message);
+            if (unmetCriteria.length > 0) {
+                passwordInput.classList.add('is-invalid');
+                passwordFeedback.textContent = 'Password must contain ' + unmetCriteria.join(', ') + '.';
+                submitButton.disabled = true; // Disable submit button if password is weak
+                if (!passwordFeedback.classList.contains('d-block')) {
+                    passwordFeedback.classList.add('d-block');
+                }
+            } else {
+                passwordInput.classList.remove('is-invalid');
+                passwordFeedback.textContent = ''; // Clear the feedback message when password is strong
+                submitButton.disabled = false; // Enable submit button if password is strong
+                if (passwordFeedback.classList.contains('d-block')) {
+                    passwordFeedback.classList.remove('d-block');
+                }
+            }
+        });
+
+        registerForm.addEventListener('submit', (e) => {
+            const passwordValue = passwordInput.value;
+            const passwordCriteria = [
+                { regex: /.{8,}/, message: 'at least 8 characters' },
+                { regex: /[A-Z]/, message: 'one uppercase letter' },
+                { regex: /[a-z]/, message: 'one lowercase letter' },
+                { regex: /[0-9]/, message: 'one digit' },
+                { regex: /[!@#$%^&*(),.?":{}|<>]/, message: 'one special character' }
+            ];
+
+            const unmetCriteria = passwordCriteria.filter(criteria => !criteria.regex.test(passwordValue)).map(criteria => criteria.message);
+
+            if (unmetCriteria.length > 0) {
+                e.preventDefault();
+                alert('Password is too weak. ' + 'Password must contain ' + unmetCriteria.join(', ') + '.');
+            }
+        });
+    });
+</script>
+{% endblock content %}

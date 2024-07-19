@@ -1,0 +1,131 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section class="hero-section">
+  <div class="jumbotron hero-jumbotron">
+    <div class="container text-center hero-content">
+      <h1 class="hero-title">Fraudify | a Fraud Detection System</h1>
+      <p><b>Welcome to <b>Fraudify</b>, your ultimate fraud detection system. We offer real-time monitoring and advanced analysis to swiftly identify and prevent fraudulent activities, ensuring your security and peace of mind.
+      </b></p>
+    </div>
+    <div class="hero-overlay"></div>
+    <img src="{{ url_for('static', filename='fraudbuster.png') }}" class="img-responsive hero-background" alt="Background Image">
+  </div>
+</section>
+<style>
+  .hero-section {
+      position: relative;
+  }
+  
+  .hero-jumbotron {
+      position: relative;
+      overflow: hidden;
+      padding: 0;
+      margin: 0;
+  }
+  
+  .hero-background {
+      width: 100%;
+      height: auto;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+  }
+  
+  .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(240, 236, 236, 0.5);
+      z-index: 2;
+  }
+  
+  .hero-content {
+      position: relative;
+      z-index: 3;
+      color: #574f4f; 
+      padding: 100px 20px;
+  }
+  
+  .hero-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+  }
+  
+  .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 0;
+  }
+  
+  .feature-title {
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 10px;
+  }
+
+  .feature-img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s ease-in-out;
+  }
+
+  .feature-img:hover {
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  @media (max-width: 768px) {
+      .mb-4 {
+          margin-bottom: 20px;
+      }
+  }
+</style>
+
+<div class="container text-center pb-5">    
+  <!-- <h2 class="mb-4">How It Works</h2> -->
+  <div class="row">
+    <!-- <div class="col-md-3 col-sm-6 mb-4">
+      <p class="feature-title">Real-time Monitoring</p>
+      <img src="{{ url_for('static', filename='download.jpg') }}" class="feature-img" alt="Real-time Monitoring">
+    </div>
+    <div class="col-md-3 col-sm-6 mb-4"> 
+      <p class="feature-title">Pattern Recognition</p>
+      <img src="{{ url_for('static', filename='pattern.png') }}" class="feature-img" alt="Pattern Recognition">
+    </div>
+    <div class="col-md-3 col-sm-6 mb-4"> 
+      <p class="feature-title">Alerts and Notifications</p>
+      <img src="{{ url_for('static', filename='images.png') }}" class="feature-img" alt="Alerts and Notifications">
+    </div>
+    <div class="col-md-3 col-sm-6 mb-4">
+      <p class="feature-title">Data Visualization</p>
+      <img src="{{ url_for('static', filename='data.png') }}" class="feature-img" alt="Data Visualization">
+    </div>
+  </div>
+</div>
+
+<div class="container text-center pb-5">    
+  <div class="row">
+    <div class="col-md-3 col-sm-6 mb-4">
+      <p class="feature-title">User Behavior Analysis</p>
+      <img src="{{ url_for('static', filename='behave.png') }}" class="feature-img" alt="User Behavior Analysis">
+    </div> -->
+    <!-- <div class="col-md-3 col-sm-6 mb-4"> 
+      <p class="feature-title">Machine Learning Models</p>
+      <img src="{{ url_for('static', filename='machine.png') }}" class="feature-img" alt="Machine Learning Models">
+    </div> -->
+    <!-- <div class="col-md-3 col-sm-6 mb-4"> 
+      <p class="feature-title">Data Integration</p>
+      <img src="{{ url_for('static', filename='dataint.jpg') }}" class="feature-img" alt="Data Integration">
+    </div>
+    <div class="col-md-3 col-sm-6 mb-4">
+      <p class="feature-title">Customizable Rules</p>
+      <img src="{{ url_for('static', filename='custom.jpg') }}" class="feature-img" alt="Customizable Rules">
+    </div>
+  </div> -->
+</div>
+{% endblock %}
